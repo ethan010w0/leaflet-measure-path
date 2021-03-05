@@ -263,6 +263,8 @@
         formatArea: formatArea,
 
         updateMeasurements: function(latLngs) {
+            let t0 = performance.now();
+
             if (!this._measurementLayer) return this;
             if (!latLngs) this._measurementLayer.clearLayers();
 
@@ -406,6 +408,9 @@
                     formatter(area), options.lang.totalArea, 0, options)
                     .addTo(this._measurementLayer);
             }
+
+            let t1 = performance.now();
+            console.log(`${t1 - t0} ms`)
 
             return this;
         },
